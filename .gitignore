@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 #Added manually to
 *.terraform.lock.hcl
 
+=======
+>>>>>>> origin/main
 # Local .terraform directories
 **/.terraform/*
 
