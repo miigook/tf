@@ -12,6 +12,7 @@ resource "aws_nat_gateway" "NatGateway" {
 
   tags = {
     Name = "NAT Gateway"
+    Env = "development"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
