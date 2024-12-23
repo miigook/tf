@@ -23,7 +23,3 @@ variable "all_open" {
   
 }
 
-variable "counter" {
-    type = list(number)
-    default = [0, 1, 2]
-}
