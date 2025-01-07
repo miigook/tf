@@ -1,8 +1,7 @@
 resource "aws_security_group" "lb-sg" {
   name        = "allow_http_sg"
   description = "Allow http inbound traffic and all outbound traffic"
-  vpc_id      = aws_vpc.app.id
-
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
   tags = {
     Name = "lb-sg-app"
 
@@ -38,7 +37,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 resource "aws_security_group" "lt-sg" {
   name        = "allow_http-lt"
   description = "Allow http inbound traffic and all outbound traffic"
-  vpc_id      = aws_vpc.app.id
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   tags = {
     Name = "lt-sg-app"
@@ -48,7 +47,7 @@ resource "aws_security_group" "lt-sg" {
 
 resource "aws_vpc_security_group_ingress_rule" "allow_http_lt" {
   security_group_id = aws_security_group.lt-sg.id
-  cidr_ipv4         = "0.0.0.0/0"
+  referenced_security_group_id = aws_security_group.lb-sg.id
   from_port         = 80
   ip_protocol       = "tcp"
   to_port           = 80

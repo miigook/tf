@@ -21,7 +21,7 @@ resource "aws_launch_template" "apache-lt" {
   key_name = "amin@macbook"
 
   monitoring {
-    enabled = true
+    enabled = false
   }
 
   vpc_security_group_ids = [aws_security_group.lt-sg.id]
@@ -36,5 +36,5 @@ resource "aws_launch_template" "apache-lt" {
 
 
 
-user_data = filebase64("${path.module}/user_data.sh")
+  user_data = filebase64("${path.module}/user_data.sh")
 }
