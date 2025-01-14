@@ -3,7 +3,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [aws_security_group.web.id]
   instance_type          = var.instance_type
   user_data              = filebase64("${path.module}/extras/userdata.sh")
-  subnet_id = var.subnet_id
+  subnet_id = var.my_subnet_id
   lifecycle {
     create_before_destroy = true
   }

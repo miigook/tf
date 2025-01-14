@@ -12,9 +12,9 @@ module "vpc" {
 module "main" {
  # arguments 
   source = "../../modules/webserver/ver1"
-  instance_type = "t3.micro"
+  instance_type = "t2.micro"
   env = "prod"
-  subnet_id = module.vpc.pub_subnets_ids[0]
+  my_subnet_id = module.vpc.pub_subnets_ids[0]
   my_vpc_id = module.vpc.out_vpc_id
 }
 
